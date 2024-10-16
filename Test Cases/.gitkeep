@@ -1,0 +1,17 @@
+*** Settings ***
+Library    SeleniumLibrary
+
+*** Variables ***
+${LOGIN_URL}    http://172.24.131.218/code-editor
+${USERNAME}     nicks.agarwal@gmail.com
+${PASSWORD}  purva@123
+${BROWSER}      headlesschrome
+
+*** Test Cases ***
+Login In Headless Mode
+    Open Browser    ${LOGIN_URL}    ${BROWSER}
+    Input Text      id=username     ${USERNAME}
+    Input Text      id=password     ${PASSWORD}
+    Click Button    xpath=//button[@type='submit']
+    Wait Until Page Contains    Welcome, ${USERNAME}
+    Close Browser
